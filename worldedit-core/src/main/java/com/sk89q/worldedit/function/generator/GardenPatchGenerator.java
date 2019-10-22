@@ -162,15 +162,13 @@ public class GardenPatchGenerator implements RegionFunction {
             position = position.add(0, 1, 0);
         }
 
-        if (editSession.getBlock(position.add(0, -1, 0)).getBlockType() != BlockTypes.GRASS_BLOCK) {
+        if (!editSession.getBlock(position.add(0, -1, 0)).getBlockType().equals(BlockTypes.GRASS_BLOCK)) {
             return false;
         }
 
         BlockState leavesBlock = BlockTypes.OAK_LEAVES.getDefaultState();
 
-        if (editSession.getBlock(position).getBlockType().getMaterial().isAir()) {
-            editSession.setBlock(position, leavesBlock);
-        }
+        setBlockIfAir(editSession, position, leavesBlock);
 
         placeVine(position, position.add(0, 0, 1));
         placeVine(position, position.add(0, 0, -1));
