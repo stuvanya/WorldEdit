@@ -178,7 +178,7 @@ public class ToolCommands {
 
         BaseItemStack itemStack = player.getItemInHand(HandSide.MAIN_HAND);
         session.setTool(itemStack.getType(), new QueryTool());
-        player.print("Info tool bound to "
+        player.print("§f[§6*§f] §eИнформация о блоке привязана к "
                 + itemStack.getType().getName() + ".");
     }
 

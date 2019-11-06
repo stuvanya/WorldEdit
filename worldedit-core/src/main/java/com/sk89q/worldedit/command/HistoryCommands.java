@@ -83,9 +83,9 @@ public class HistoryCommands {
             }
         }
         if (timesUndone > 0) {
-            player.print("Undid " + timesUndone + " available edits.");
+            player.print("§f[§6*§f] §eОтменено §a" + timesUndone + " §eдоступных изменений.");
         } else {
-            player.printError("Nothing left to undo.");
+            player.printError("§f[§6*§f] §eНечего отменять.");
         }
     }
 
@@ -121,9 +121,9 @@ public class HistoryCommands {
             }
         }
         if (timesRedone > 0) {
-            player.print("Redid " + timesRedone + " available edits.");
+            player.print("§f[§6*§f] §eВосстановлено §a" + timesRedone + " §eдоступных изменений.");
         } else {
-            player.printError("Nothing left to redo.");
+            player.printError("§f[§6*§f] §eНечего восстанавливать.");
         }
     }
 

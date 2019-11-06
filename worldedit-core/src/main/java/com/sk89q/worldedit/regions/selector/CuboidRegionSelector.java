@@ -154,9 +154,9 @@ public class CuboidRegionSelector implements RegionSelector, CUIRegion {
         checkNotNull(pos);
 
         if (position1 != null && position2 != null) {
-            player.print("First position set to " + position1 + " (" + region.getArea() + ").");
+            player.print("§f[§6*§f] §eПервая точка установлена: §a" + position1 + " (§a" + region.getArea() + ")");
         } else {
-            player.print("First position set to " + position1 + ".");
+            player.print("§f[§6*§f] §eПервая точка установлена: §a" + position1 + "§e.");
         }
 
         session.dispatchCUIEvent(player, new SelectionPointEvent(0, pos, getArea()));
@@ -169,9 +169,9 @@ public class CuboidRegionSelector implements RegionSelector, CUIRegion {
         checkNotNull(pos);
 
         if (position1 != null && position2 != null) {
-            player.print("Second position set to " + position2 + " (" + region.getArea() + ").");
+            player.print("§f[§6*§f] §eВторая точка установлена: §a" + position2 + "§e  §a(" + region.getArea() + ")");
         } else {
-            player.print("Second position set to " + position2 + ".");
+            player.print("§f[§6*§f] §eВторая точка установлена: §a" + position2 + "§e .");
         }
 
         session.dispatchCUIEvent(player, new SelectionPointEvent(1, pos, getArea()));
@@ -245,11 +245,11 @@ public class CuboidRegionSelector implements RegionSelector, CUIRegion {
         final List<String> lines = new ArrayList<>();
 
         if (position1 != null) {
-            lines.add("Position 1: " + position1);
+            lines.add("§ePosition 1: §a" + position1);
         }
 
         if (position2 != null) {
-            lines.add("Position 2: " + position2);
+            lines.add("§ePosition 2: §a" + position2);
         }
 
         return lines;

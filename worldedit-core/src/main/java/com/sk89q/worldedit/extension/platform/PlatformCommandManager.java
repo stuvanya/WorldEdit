@@ -497,7 +497,7 @@ public final class PlatformCommandManager {
             }
         } catch (ConditionFailedException e) {
             if (e.getCondition() instanceof PermissionCondition) {
-                actor.printError("You are not permitted to do that. Are you in the right mode?");
+                actor.printError("§f[§6*§f] §eУ Вас нет прав на эту команду! Возможно ее можно купить на сайте §dlitepixel.ru");
             } else {
                 actor.print(e.getRichMessage());
             }
@@ -508,7 +508,7 @@ public final class PlatformCommandManager {
                 .build());
             ImmutableList<Command> cmd = e.getCommands();
             if (!cmd.isEmpty()) {
-                actor.print(TextComponent.builder("Usage: ")
+                actor.print(TextComponent.builder("Использование: ")
                     .color(TextColor.RED)
                     .append(HelpGenerator.create(e.getCommandParseResult()).getUsage())
                     .build());

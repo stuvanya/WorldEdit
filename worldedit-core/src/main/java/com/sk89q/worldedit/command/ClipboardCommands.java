@@ -173,7 +173,7 @@ public class ClipboardCommands {
             selector.explainRegionAdjust(actor, session);
         }
 
-        actor.print("The clipboard has been pasted at " + to);
+        actor.print("Копирование было вставлено на позиции " + to);
         List<String> messages = Lists.newArrayList();
         operation.addStatusMessages(messages);
         messages.forEach(actor::print);
@@ -206,7 +206,7 @@ public class ClipboardCommands {
         transform = transform.rotateX(-xRotate);
         transform = transform.rotateZ(-zRotate);
         holder.setTransform(holder.getTransform().combine(transform));
-        actor.print("The clipboard copy has been rotated.");
+        actor.print("Копирование было повернуто.");
     }
 
     @Command(
@@ -221,7 +221,7 @@ public class ClipboardCommands {
         AffineTransform transform = new AffineTransform();
         transform = transform.scale(direction.abs().multiply(-2).add(1, 1, 1).toVector3());
         holder.setTransform(holder.getTransform().combine(transform));
-        actor.print("The clipboard copy has been flipped.");
+        actor.print("Копирование было отражено.");
     }
 
     @Command(
@@ -231,6 +231,6 @@ public class ClipboardCommands {
     @CommandPermissions("worldedit.clipboard.clear")
     public void clearClipboard(Actor actor, LocalSession session) throws WorldEditException {
         session.setClipboard(null);
-        actor.print("Clipboard cleared.");
+        actor.print("Копирование очищено.");
     }
 }

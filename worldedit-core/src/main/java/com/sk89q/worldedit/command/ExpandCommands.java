@@ -110,8 +110,8 @@ public class ExpandCommands {
             session.getRegionSelector(player.getWorld()).learnChanges();
             int newSize = region.getArea();
             session.getRegionSelector(player.getWorld()).explainRegionAdjust(player, session);
-            player.print("Region expanded " + (newSize - oldSize)
-                + " blocks [top-to-bottom].");
+            player.print("§f[§6*§f] §eРегион расширен на §a" + (newSize - oldSize)
+                + " §eблоков [сверху-до-низу].");
         } catch (RegionOperationException e) {
             player.printError(e.getMessage());
         }
@@ -148,7 +148,7 @@ public class ExpandCommands {
 
         session.getRegionSelector(world).explainRegionAdjust(actor, session);
 
-        actor.print("Region expanded " + (newSize - oldSize) + " block(s).");
+        actor.print("§f[§6*§f] §eРегион расширен на §a" + (newSize - oldSize) + "§e блок(ов).");
     }
 
 }

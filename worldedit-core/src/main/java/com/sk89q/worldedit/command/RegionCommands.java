@@ -102,9 +102,14 @@ public class RegionCommands {
         List<String> messages = Lists.newArrayList();
         visitor.addStatusMessages(messages);
         if (messages.isEmpty()) {
-            actor.print("Operation completed.");
+            actor.print("§f[§6*§f] §eУспешно завершено.");
         } else {
-            actor.print("Operation completed (" + Joiner.on(", ").join(messages) + ").");
+            String message = Joiner.on(", ").join(messages);
+            if (message.startsWith("0")) {
+                actor.print("§f[§6*§f] §cЧто-то пошло не так! §a(" + Joiner.on(", ").join(messages) + ")");
+            } else {
+                actor.print("§f[§6*§f] §eУспешно завершено §a(" + Joiner.on(", ").join(messages) + ")");
+            }
         }
 
         return visitor.getAffected();
@@ -186,7 +191,7 @@ public class RegionCommands {
             from = new ExistingBlockMask(editSession);
         }
         int affected = editSession.replaceBlocks(region, from, to);
-        actor.print(affected + " block(s) have been replaced.");
+        actor.print("§f[§6*§f] §e" + affected + " блоко(ов) заменено.");
         return affected;
     }
 
@@ -373,9 +378,9 @@ public class RegionCommands {
 
         if (moveSelection) {
             try {
-                final BlockVector3 size = region.getMaximumPoint().subtract(region.getMinimumPoint()).add(1, 1, 1);
+                final BlockVector3 size = region.getMaximumPoint().subtract(region.getMinimumPoint());
 
-                final BlockVector3 shiftVector = direction.multiply(size).multiply(count);
+                final BlockVector3 shiftVector = direction.toVector3().multiply(count * (Math.abs(direction.dot(size)) + 1)).toBlockPoint();
                 region.shift(shiftVector);
 
                 session.getRegionSelector(world).learnChanges();

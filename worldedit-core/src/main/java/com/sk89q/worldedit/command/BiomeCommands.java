@@ -86,7 +86,7 @@ public class BiomeCommands {
             BiomeRegistry biomeRegistry = WorldEdit.getInstance().getPlatformManager()
                     .queryCapability(Capability.GAME_HOOKS).getRegistries().getBiomeRegistry();
 
-            PaginationBox paginationBox = PaginationBox.fromStrings("Available Biomes", "/biomelist -p %page%",
+            PaginationBox paginationBox = PaginationBox.fromStrings("Доступные биомы", "/biomelist -p %page%",
                     BiomeType.REGISTRY.values().stream()
                             .map(biomeType -> {
                                 String id = biomeType.getId();
@@ -110,9 +110,9 @@ public class BiomeCommands {
     )
     @CommandPermissions("worldedit.biome.info")
     public void biomeInfo(Player player, LocalSession session,
-                          @Switch(name = 't', desc = "Use the block you are looking at.")
+                          @Switch(name = 't', desc = "Использовать блок, на который Вы смотрите.")
                               boolean useLineOfSight,
-                          @Switch(name = 'p', desc = "Use the block you are currently in.")
+                          @Switch(name = 'p', desc = "Использовать блок, в котором Вы стоите.")
                               boolean usePosition) throws WorldEditException {
         BiomeRegistry biomeRegistry = WorldEdit.getInstance().getPlatformManager()
                 .queryCapability(Capability.GAME_HOOKS).getRegistries().getBiomeRegistry();
@@ -122,7 +122,7 @@ public class BiomeCommands {
         if (useLineOfSight) {
             Location blockPosition = player.getBlockTrace(300);
             if (blockPosition == null) {
-                player.printError("No block in sight!");
+                player.printError("Нет блоков в поле зрения!");
                 return;
             }
 

@@ -79,7 +79,7 @@ public class WorldEditExceptionConverter extends ExceptionConverterHelper {
 
     @ExceptionMatch
     public void convert(IncompleteRegionException e) throws CommandException {
-        throw newCommandException("Make a region selection first.", e);
+        throw newCommandException("§f[§6*§f] §cСначала выделите регион!", e);
     }
 
     @ExceptionMatch
@@ -105,7 +105,7 @@ public class WorldEditExceptionConverter extends ExceptionConverterHelper {
 
     @ExceptionMatch
     public void convert(MaxChangedBlocksException e) throws CommandException {
-        throw newCommandException("Max blocks changed in an operation reached ("
+        throw newCommandException("§f[§6*§f] §cДостигнуто максимальное количество блоков ("
                 + e.getBlockLimit() + ").", e);
     }
 
