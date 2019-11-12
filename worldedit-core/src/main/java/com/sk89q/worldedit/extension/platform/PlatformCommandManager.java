@@ -497,7 +497,7 @@ public final class PlatformCommandManager {
             }
         } catch (ConditionFailedException e) {
             if (e.getCondition() instanceof PermissionCondition) {
-                actor.printError("§f[§6*§f] §eУ Вас нет прав на эту команду! Возможно ее можно купить на сайте §dlitepixel.ru");
+                actor.printError("§f[§6*§f] §eУ Вас нет прав на эту команду!");
             } else {
                 actor.print(e.getRichMessage());
             }
