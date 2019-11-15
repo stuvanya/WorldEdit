@@ -99,7 +99,7 @@ public class UtilityCommands {
 
         BlockVector3 pos = session.getPlacementPosition(actor);
         int affected = editSession.fillXZ(pos, pattern, radius, depth, false);
-        actor.print(affected + " block(s) have been created.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) создано.");
         return affected;
     }
 
@@ -123,7 +123,7 @@ public class UtilityCommands {
 
         BlockVector3 pos = session.getPlacementPosition(actor);
         int affected = editSession.fillXZ(pos, pattern, radius, depth, true);
-        actor.print(affected + " block(s) have been created.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) создано.");
         return affected;
     }
 
@@ -142,7 +142,7 @@ public class UtilityCommands {
         we.checkMaxRadius(radius);
         int affected = editSession.drainArea(
             session.getPlacementPosition(actor), radius, waterlogged);
-        actor.print(affected + " block(s) have been changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) изменено.");
         return affected;
     }
 
@@ -159,7 +159,7 @@ public class UtilityCommands {
         radius = Math.max(0, radius);
         we.checkMaxRadius(radius);
         int affected = editSession.fixLiquid(session.getPlacementPosition(actor), radius, BlockTypes.LAVA);
-        actor.print(affected + " block(s) have been changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) изменено.");
         return affected;
     }
 
@@ -176,7 +176,7 @@ public class UtilityCommands {
         radius = Math.max(0, radius);
         we.checkMaxRadius(radius);
         int affected = editSession.fixLiquid(session.getPlacementPosition(actor), radius, BlockTypes.WATER);
-        actor.print(affected + " block(s) have been changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) изменено.");
         return affected;
     }
 
@@ -197,7 +197,7 @@ public class UtilityCommands {
         height = height != null ? Math.min((world.getMaxY() + 1), height + 1) : (world.getMaxY() + 1);
 
         int affected = editSession.removeAbove(session.getPlacementPosition(actor), size, height);
-        actor.print(affected + " block(s) have been removed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) убрано.");
         return affected;
     }
 
@@ -218,7 +218,7 @@ public class UtilityCommands {
         height = height != null ? Math.min((world.getMaxY() + 1), height + 1) : (world.getMaxY() + 1);
 
         int affected = editSession.removeBelow(session.getPlacementPosition(actor), size, height);
-        actor.print(affected + " block(s) have been removed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) убрано.");
         return affected;
     }
 
@@ -238,7 +238,7 @@ public class UtilityCommands {
         we.checkMaxRadius(radius);
 
         int affected = editSession.removeNear(session.getPlacementPosition(actor), mask, radius);
-        actor.print(affected + " block(s) have been removed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) убрано.");
         return affected;
     }
 
@@ -269,7 +269,7 @@ public class UtilityCommands {
         }
 
         int affected = editSession.replaceBlocks(region, from, to);
-        actor.print(affected + " block(s) have been replaced.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) заменено.");
         return affected;
     }
 
@@ -349,7 +349,7 @@ public class UtilityCommands {
 
         Mask mask = new BlockTypeMask(editSession, BlockTypes.FIRE);
         int affected = editSession.removeNear(session.getPlacementPosition(actor), mask, size);
-        actor.print(affected + " block(s) have been removed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) убрано.");
     }
 
     @Command(

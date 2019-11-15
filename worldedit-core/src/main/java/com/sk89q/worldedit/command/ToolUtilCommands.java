@@ -59,10 +59,10 @@ public class ToolUtilCommands {
         }
         if (hasSuperPickAxe) {
             session.disableSuperPickAxe();
-            player.print("§f[§6*§f] §eСупер-кирка выключена.");
+            player.print("§5§l╠§a§lS-3D§5§l╣§r §bСупер-кирка выключена.");
         } else {
             session.enableSuperPickAxe();
-            player.print("§f[§6*§f] §eСупер-кирка включена.");
+            player.print("§5§l╠§a§lS-3D§5§l╣§r §bСупер-кирка включена.");
         }
 
     }

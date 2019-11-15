@@ -497,7 +497,7 @@ public final class PlatformCommandManager {
             }
         } catch (ConditionFailedException e) {
             if (e.getCondition() instanceof PermissionCondition) {
-                actor.printError("§f[§6*§f] §eУ Вас нет прав на эту команду!");
+                actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cВы не имеете право выполнять данную команду!");
             } else {
                 actor.print(e.getRichMessage());
             }
@@ -508,7 +508,7 @@ public final class PlatformCommandManager {
                 .build());
             ImmutableList<Command> cmd = e.getCommands();
             if (!cmd.isEmpty()) {
-                actor.print(TextComponent.builder("Использование: ")
+                actor.print(TextComponent.builder("§5§l╠§a§lS-3D§5§l╣§r §bИспользование: ")
                     .color(TextColor.RED)
                     .append(HelpGenerator.create(e.getCommandParseResult()).getUsage())
                     .build());

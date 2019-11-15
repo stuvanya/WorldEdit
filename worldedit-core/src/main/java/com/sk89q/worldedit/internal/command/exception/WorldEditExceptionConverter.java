@@ -79,7 +79,7 @@ public class WorldEditExceptionConverter extends ExceptionConverterHelper {
 
     @ExceptionMatch
     public void convert(IncompleteRegionException e) throws CommandException {
-        throw newCommandException("§f[§6*§f] §cСначала выделите регион!", e);
+        throw newCommandException("§5§l╠§a§lS-3D§5§l╣§r §cСначала выделите регион!", e);
     }
 
     @ExceptionMatch
@@ -105,7 +105,7 @@ public class WorldEditExceptionConverter extends ExceptionConverterHelper {
 
     @ExceptionMatch
     public void convert(MaxChangedBlocksException e) throws CommandException {
-        throw newCommandException("§f[§6*§f] §cДостигнуто максимальное количество блоков ("
+        throw newCommandException("§5§l╠§a§lS-3D§5§l╣§r §cДостигнуто максимальное количество блоков ("
                 + e.getBlockLimit() + ").", e);
     }
 

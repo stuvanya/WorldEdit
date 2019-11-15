@@ -102,13 +102,13 @@ public class RegionCommands {
         List<String> messages = Lists.newArrayList();
         visitor.addStatusMessages(messages);
         if (messages.isEmpty()) {
-            actor.print("§f[§6*§f] §eУспешно завершено.");
+            actor.print("§5§l╠§a§lS-3D§5§l╣§r §bУспешно завершено.");
         } else {
             String message = Joiner.on(", ").join(messages);
             if (message.startsWith("0")) {
-                actor.print("§f[§6*§f] §cЧто-то пошло не так! §a(" + Joiner.on(", ").join(messages) + ")");
+                actor.print("§5§l╠§a§lS-3D§5§l╣§r §cЧто-то пошло не так! §a(" + Joiner.on(", ").join(messages) + ")");
             } else {
-                actor.print("§f[§6*§f] §eУспешно завершено §a(" + Joiner.on(", ").join(messages) + ")");
+                actor.print("§5§l╠§a§lS-3D§5§l╣§r §bУспешно завершено §a(" + Joiner.on(", ").join(messages) + ")");
             }
         }
 
@@ -141,7 +141,7 @@ public class RegionCommands {
         BlockVector3 pos2 = cuboidregion.getPos2();
         int blocksChanged = editSession.drawLine(pattern, pos1, pos2, thickness, !shell);
 
-        actor.print(blocksChanged + " block(s) have been changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + blocksChanged + "§b блок(-а/-ов) изменено!");
         return blocksChanged;
     }
 
@@ -171,7 +171,7 @@ public class RegionCommands {
 
         int blocksChanged = editSession.drawSpline(pattern, vectors, 0, 0, 0, 10, thickness, !shell);
 
-        actor.print(blocksChanged + " block(s) have been changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + blocksChanged + "§b блок(-а/-ов) изменено!");
         return blocksChanged;
     }
 
@@ -191,7 +191,7 @@ public class RegionCommands {
             from = new ExistingBlockMask(editSession);
         }
         int affected = editSession.replaceBlocks(region, from, to);
-        actor.print("§f[§6*§f] §e" + affected + " блоко(ов) заменено.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) заменено.");
         return affected;
     }
 
@@ -246,7 +246,7 @@ public class RegionCommands {
                      @Arg(desc = "The pattern of blocks to set")
                          Pattern pattern) throws WorldEditException {
         int affected = editSession.makeWalls(region, pattern);
-        actor.print(affected + " block(s) have been changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) изменено!");
         return affected;
     }
 
@@ -261,7 +261,7 @@ public class RegionCommands {
                      @Arg(desc = "The pattern of blocks to set")
                          Pattern pattern) throws WorldEditException {
         int affected = editSession.makeCuboidFaces(region, pattern);
-        actor.print(affected + " block(s) have been changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) изменено!");
         return affected;
     }
 
@@ -280,7 +280,7 @@ public class RegionCommands {
         HeightMap heightMap = new HeightMap(editSession, region, mask);
         HeightMapFilter filter = new HeightMapFilter(new GaussianKernel(5, 1.0));
         int affected = heightMap.applyFilter(filter, iterations);
-        actor.print("Terrain's height map smoothed. " + affected + " block(s) changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §bТерритория сглажена, " + affected + "§b блок(-а/-ов) изменено!");
         return affected;
     }
 
@@ -335,7 +335,7 @@ public class RegionCommands {
             }
         }
 
-        actor.print(affected + " block(s) moved.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) сдвинуто!");
         return affected;
     }
 
@@ -390,7 +390,7 @@ public class RegionCommands {
             }
         }
 
-        actor.print(affected + " block(s) changed. Undo with //undo");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) изменено!");
         return affected;
     }
 
@@ -411,7 +411,7 @@ public class RegionCommands {
         } finally {
             session.setMask(mask);
         }
-        actor.print("Region regenerated.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §bРегион регенерирован!");
     }
 
     @Command(
@@ -481,7 +481,7 @@ public class RegionCommands {
         checkCommandArgument(thickness >= 0, "Thickness must be >= 0");
 
         int affected = editSession.hollowOutRegion(region, thickness, pattern);
-        actor.print(affected + " block(s) have been changed.");
+        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) изменено!");
         return affected;
     }
 
