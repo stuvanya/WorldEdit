@@ -173,7 +173,7 @@ public class ClipboardCommands {
             selector.explainRegionAdjust(actor, session);
         }
 
-        actor.print("§5§l╠§a§lS-3D§5§l╣§r §bСодержимое буфера обмена было вставлено на позиции §a" + to);
+        actor.print("§f[§6*§f] §eСодержимое буфера обмена было вставлено на позиции §a" + to);
         List<String> messages = Lists.newArrayList();
         operation.addStatusMessages(messages);
         messages.forEach(actor::print);
@@ -206,7 +206,7 @@ public class ClipboardCommands {
         transform = transform.rotateX(-xRotate);
         transform = transform.rotateZ(-zRotate);
         holder.setTransform(holder.getTransform().combine(transform));
-        actor.print("§5§l╠§a§lS-3D§5§l╣§r §bСодержимое буфера обмена было повернуто.");
+        actor.print("§f[§6*§f] §eСодержимое буфера обмена было повернуто.");
     }
 
     @Command(
@@ -221,7 +221,7 @@ public class ClipboardCommands {
         AffineTransform transform = new AffineTransform();
         transform = transform.scale(direction.abs().multiply(-2).add(1, 1, 1).toVector3());
         holder.setTransform(holder.getTransform().combine(transform));
-        actor.print("§5§l╠§a§lS-3D§5§l╣§r §bСодержимое буфера обмена было отражено.");
+        actor.print("§f[§6*§f] §eСодержимое буфера обмена было отражено.");
     }
 
     @Command(
@@ -231,6 +231,6 @@ public class ClipboardCommands {
     @CommandPermissions("worldedit.clipboard.clear")
     public void clearClipboard(Actor actor, LocalSession session) throws WorldEditException {
         session.setClipboard(null);
-        actor.print("§5§l╠§a§lS-3D§5§l╣§r §bСодержимое буфера обмена очищено.");
+        actor.print("§f[§6*§f] §eСодержимое буфера обмена очищено.");
     }
 }

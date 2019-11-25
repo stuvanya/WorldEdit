@@ -112,7 +112,7 @@ public class SchematicCommands {
                 ClipboardFormats.getFileExtensionArray());
 
         if (!f.exists()) {
-            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cСхематик " + filename + " не найден!");
+            actor.printError("§f[§6*§f] §cСхематик " + filename + " не найден!");
             return;
         }
 
@@ -121,16 +121,16 @@ public class SchematicCommands {
             format = ClipboardFormats.findByAlias(formatName);
         }
         if (format == null) {
-            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cНеизвестный формат файла: " + formatName);
+            actor.printError("§f[§6*§f] §cНеизвестный формат файла: " + formatName);
             return;
         }
 
         SchematicLoadTask task = new SchematicLoadTask(actor, f, format);
         AsyncCommandBuilder.wrap(task, actor)
-                .registerWithSupervisor(worldEdit.getSupervisor(), "§5§l╠§a§lS-3D§5§l╣§r §bЗагрузка схематика " + filename)
-                .sendMessageAfterDelay("§b(Пожалуйста подождите... загрузка схематика.)")
-                .onSuccess(TextComponent.of("§5§l╠§a§lS-3D§5§l╣§r §a" + filename, TextColor.GOLD)
-                                .append(TextComponent.of(" §bзагружен. Вставить его можно командой ", TextColor.LIGHT_PURPLE))
+                .registerWithSupervisor(worldEdit.getSupervisor(), "§f[§6*§f] §eЗагрузка схематика " + filename)
+                .sendMessageAfterDelay("§e(Пожалуйста подождите... загрузка схематика.)")
+                .onSuccess(TextComponent.of("§f[§6*§f] §a" + filename, TextColor.GREEN)
+                                .append(TextComponent.of(" §eзагружен. Вставить его можно командой ", TextColor.YELLOW))
                                 .append(CodeFormat.wrap("//paste").clickEvent(ClickEvent.of(ClickEvent.Action.SUGGEST_COMMAND, "//paste"))),
                         session::setClipboard)
                 .onFailure("Failed to load schematic", worldEdit.getPlatformManager().getPlatformCommandManager().getExceptionConverter())
@@ -156,7 +156,7 @@ public class SchematicCommands {
 
         ClipboardFormat format = ClipboardFormats.findByAlias(formatName);
         if (format == null) {
-            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cНеизвестный формат файла: " + formatName);
+            actor.printError("§f[§6*§f] §cНеизвестный формат файла: " + formatName);
             return;
         }
 
@@ -165,10 +165,10 @@ public class SchematicCommands {
         boolean overwrite = f.exists();
         if (overwrite) {
             if (!actor.hasPermission("worldedit.schematic.delete")) {
-                throw new StopExecutionException(TextComponent.of("§5§l╠§a§lS-3D§5§l╣§r §cТакой схематик уже существует!"));
+                throw new StopExecutionException(TextComponent.of("§f[§6*§f] §cТакой схематик уже существует!"));
             }
             if (!allowOverwrite) {
-                actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cТакой схематик уже существует! Используйте флаг-f чтобы его перезаписать.");
+                actor.printError("§f[§6*§f] §cТакой схематик уже существует! Используйте флаг-f чтобы его перезаписать.");
                 return;
             }
         }
@@ -186,9 +186,9 @@ public class SchematicCommands {
 
         SchematicSaveTask task = new SchematicSaveTask(actor, f, format, holder, overwrite);
         AsyncCommandBuilder.wrap(task, actor)
-                .registerWithSupervisor(worldEdit.getSupervisor(), "§5§l╠§a§lS-3D§5§l╣§r §bСохранение схематика " + filename)
-                .sendMessageAfterDelay("§b(Пожалуйста подождите... сохранение схематика.)")
-                .onSuccess("§5§l╠§a§lS-3D§5§l╣§r §a" + filename + " сохранен" + (overwrite ? " (предыдущий файл перезаписан)." : "."), null)
+                .registerWithSupervisor(worldEdit.getSupervisor(), "§f[§6*§f] §eСохранение схематика " + filename)
+                .sendMessageAfterDelay("§e(Пожалуйста подождите... сохранение схематика.)")
+                .onSuccess("§f[§6*§f] §a" + filename + " сохранен" + (overwrite ? " (предыдущий файл перезаписан)." : "."), null)
                 .onFailure("Failed to load schematic", worldEdit.getPlatformManager().getPlatformCommandManager().getExceptionConverter())
                 .buildAndExec(worldEdit.getExecutorService());
     }
@@ -209,7 +209,7 @@ public class SchematicCommands {
                 dir, filename, "schematic", ClipboardFormats.getFileExtensionArray());
 
         if (!f.exists()) {
-            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cСхематик " + filename + " не найден!");
+            actor.printError("§f[§6*§f] §cСхематик " + filename + " не найден!");
             return;
         }
 
@@ -365,7 +365,7 @@ public class SchematicCommands {
             List<File> fileList = allFiles(rootDir);
 
             if (fileList == null || fileList.isEmpty()) {
-                return ErrorFormat.wrap("§5§l╠§a§lS-3D§5§l╣§r §cНе найдено ни одного схематика .");
+                return ErrorFormat.wrap("§f[§6*§f] §cНе найдено ни одного схематика .");
             }
 
             File[] files = new File[fileList.size()];
@@ -414,7 +414,7 @@ public class SchematicCommands {
         private final File[] files;
 
         SchematicPaginationBox(String rootDir, File[] files, String pageCommand) {
-            super("§bДоступные схематики", pageCommand);
+            super("§eДоступные схематики", pageCommand);
             this.prefix = rootDir == null ? "" : rootDir;
             this.files = files;
         }

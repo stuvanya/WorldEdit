@@ -49,7 +49,7 @@ public class SuperPickaxeCommands {
     public void single(Player player, LocalSession session) throws WorldEditException {
         session.setSuperPickaxe(new SinglePickaxe());
         session.enableSuperPickAxe();
-        player.print("§5§l╠§a§lS-3D§5§l╣§r §bРежим изменён. ЛКМ киркой для использования. Чтобы выключить используйте команду §a//.");
+        player.print("§f[§6*§f] §eРежим изменён. ЛКМ киркой для использования. Чтобы выключить используйте команду §a//.");
     }
 
     @Command(
@@ -70,7 +70,7 @@ public class SuperPickaxeCommands {
 
         session.setSuperPickaxe(new AreaPickaxe(range));
         session.enableSuperPickAxe();
-        player.print("§5§l╠§a§lS-3D§5§l╣§r §bРежим изменён. ЛКМ киркой для использования. Чтобы выключить используйте команду §a//.");
+        player.print("§f[§6*§f] §eРежим изменён. ЛКМ киркой для использования. Чтобы выключить используйте команду §a//.");
     }
 
     @Command(
@@ -86,12 +86,12 @@ public class SuperPickaxeCommands {
         LocalConfiguration config = we.getConfiguration();
 
         if (range > config.maxSuperPickaxeSize) {
-            player.printError("§5§l╠§a§lS-3D§5§l╣§r §cМаксимальный радиус: " + config.maxSuperPickaxeSize);
+            player.printError("§f[§6*§f] §cМаксимальный радиус: " + config.maxSuperPickaxeSize);
             return;
         }
 
         session.setSuperPickaxe(new RecursivePickaxe(range));
         session.enableSuperPickAxe();
-        player.print("§5§l╠§a§lS-3D§5§l╣§r §bРежим изменён. ЛКМ киркой для использования. Чтобы выключить используйте команду §a//.");
+        player.print("§f[§6*§f] §eРежим изменён. ЛКМ киркой для использования. Чтобы выключить используйте команду §a//.");
     }
 }

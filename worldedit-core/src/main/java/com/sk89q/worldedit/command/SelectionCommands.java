@@ -120,7 +120,7 @@ public class SelectionCommands {
         }
 
         if (!session.getRegionSelector(world).selectPrimary(pos.toVector().toBlockPoint(), ActorSelectorLimits.forActor(actor))) {
-            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §bПозиция уже установлена.");
+            actor.printError("§f[§6*§f] §eПозиция уже установлена.");
             return;
         }
 
@@ -148,7 +148,7 @@ public class SelectionCommands {
         }
 
         if (!session.getRegionSelector(world).selectSecondary(pos.toVector().toBlockPoint(), ActorSelectorLimits.forActor(actor))) {
-            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §bПозиция уже установлена.");
+            actor.printError("§f[§6*§f] §eПозиция уже установлена.");
             return;
         }
 
@@ -167,14 +167,14 @@ public class SelectionCommands {
 
         if (pos != null) {
             if (!session.getRegionSelector(player.getWorld()).selectPrimary(pos.toVector().toBlockPoint(), ActorSelectorLimits.forActor(player))) {
-                player.printError("§5§l╠§a§lS-3D§5§l╣§r §bПозиция уже установлена.");
+                player.printError("§f[§6*§f] §eПозиция уже установлена.");
                 return;
             }
 
             session.getRegionSelector(player.getWorld())
                     .explainPrimarySelection(player, session, pos.toVector().toBlockPoint());
         } else {
-            player.printError("§5§l╠§a§lS-3D§5§l╣§r §bНет блоков в поле зрения!");
+            player.printError("§f[§6*§f] §eНет блоков в поле зрения!");
         }
     }
 
@@ -189,14 +189,14 @@ public class SelectionCommands {
 
         if (pos != null) {
             if (!session.getRegionSelector(player.getWorld()).selectSecondary(pos.toVector().toBlockPoint(), ActorSelectorLimits.forActor(player))) {
-                player.printError("§5§l╠§a§lS-3D§5§l╣§r §bПозиция уже установлена.");
+                player.printError("§f[§6*§f] §eПозиция уже установлена.");
                 return;
             }
 
             session.getRegionSelector(player.getWorld())
                     .explainSecondarySelection(player, session, pos.toVector().toBlockPoint());
         } else {
-            player.printError("§5§l╠§a§lS-3D§5§l╣§r §bНет блоков в поле зрения!");
+            player.printError("§f[§6*§f] §eНет блоков в поле зрения!");
         }
     }
 
@@ -225,7 +225,7 @@ public class SelectionCommands {
             min = BlockVector3.at(min2D.getBlockX() * 16, 0, min2D.getBlockZ() * 16);
             max = BlockVector3.at(max2D.getBlockX() * 16 + 15, world.getMaxY(), max2D.getBlockZ() * 16 + 15);
 
-            player.print("§5§l╠§a§lS-3D§5§l╣§r §bЧанк выделен: ("
+            player.print("§f[§6*§f] §eЧанк выделен: ("
                     + min2D.getBlockX() + ", " + min2D.getBlockZ() + ") - ("
                     + max2D.getBlockX() + ", " + max2D.getBlockZ() + ")");
         } else {
@@ -243,7 +243,7 @@ public class SelectionCommands {
             min = BlockVector3.at(min2D.getBlockX() * 16, 0, min2D.getBlockZ() * 16);
             max = min.add(15, world.getMaxY(), 15);
 
-            player.print("§5§l╠§a§lS-3D§5§l╣§r §bЧанк выделен: "
+            player.print("§f[§6*§f] §eЧанк выделен: "
                     + min2D.getBlockX() + ", " + min2D.getBlockZ());
         }
 
@@ -280,10 +280,10 @@ public class SelectionCommands {
         player.giveItem(new BaseItemStack(itemType, 1));
         if (navWand) {
             session.setTool(itemType, new NavigationWand());
-            player.print("§5§l╠§a§lS-3D§5§l╣§r §bЛКМ: jump to location; ПКМ: pass through walls");
+            player.print("§f[§6*§f] §eЛКМ: jump to location; ПКМ: pass through walls");
         } else {
             session.setTool(itemType, new SelectionWand());
-            player.print("§5§l╠§a§lS-3D§5§l╣§r §bЛКМ: выбрать точку §a№1§b; ПКМ: выбрать точку §a№2");
+            player.print("§f[§6*§f] §eЛКМ: выбрать точку §a№1§e; ПКМ: выбрать точку §a№2");
         }
     }
 
@@ -335,7 +335,7 @@ public class SelectionCommands {
 
             session.getRegionSelector(world).explainRegionAdjust(actor, session);
 
-            actor.print("§5§l╠§a§lS-3D§5§l╣§r §bРегион уменьшен на " + (oldSize - newSize) + " блоков.");
+            actor.print("§f[§6*§f] §eРегион уменьшен на " + (oldSize - newSize) + " блоков.");
         } catch (RegionOperationException e) {
             actor.printError(e.getMessage());
         }

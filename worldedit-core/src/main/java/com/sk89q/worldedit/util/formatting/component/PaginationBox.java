@@ -79,11 +79,11 @@ public abstract class PaginationBox extends MessageBox {
 
     public Component create(int page) throws InvalidComponentException {
         if (page == 1 && getComponentsSize() == 0) {
-            return getContents().reset().append("§5§l╠§a§lS-3D§5§l╣§r §cНичего не найдено.").create();
+            return getContents().reset().append("§f[§6*§f] §cНичего не найдено.").create();
         }
         int pageCount = (int) Math.ceil(getComponentsSize() / (double) componentsPerPage);
         if (page < 1 || page > pageCount) {
-            throw new InvalidComponentException("§5§l╠§a§lS-3D§5§l╣§r §cНеверный номер страницы.");
+            throw new InvalidComponentException("§f[§6*§f] §cНеверный номер страницы.");
         }
         currentPage = page;
         final int lastComp = Math.min(page * componentsPerPage, getComponentsSize());

@@ -123,7 +123,7 @@ public class GenerationCommands {
 
         BlockVector3 pos = session.getPlacementPosition(actor);
         int affected = editSession.makeCylinder(pos, pattern, radiusX, radiusZ, height, !hollow);
-        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) создано.");
+        actor.print("§f[§6*§f] §a" + affected + "§e блок(-а/-ов) создано.");
         return affected;
     }
 
@@ -190,7 +190,7 @@ public class GenerationCommands {
         if (actor instanceof Player) {
             ((Player) actor).findFreePosition();
         }
-        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) создано.");
+        actor.print("§f[§6*§f] §a" + affected + "§e блок(-а/-ов) создано.");
         return affected;
     }
 
@@ -263,7 +263,7 @@ public class GenerationCommands {
         if (actor instanceof Player) {
             ((Player) actor).findFreePosition();
         }
-        actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) создано.");
+        actor.print("§f[§6*§f] §a" + affected + "§e блок(-а/-ов) создано.");
         return affected;
     }
 
@@ -322,7 +322,7 @@ public class GenerationCommands {
             if (actor instanceof Player) {
                 ((Player) actor).findFreePosition();
             }
-            actor.print("§5§l╠§a§lS-3D§5§l╣§r §a" + affected + "§b блок(-а/-ов) создано.");
+            actor.print("§f[§6*§f] §a" + affected + "§e блок(-а/-ов) создано.");
             return affected;
         } catch (ExpressionException e) {
             actor.printError(e.getMessage());

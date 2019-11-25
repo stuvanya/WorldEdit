@@ -339,22 +339,22 @@ public class ForwardExtentCopy implements Operation {
     @Override
     public void addStatusMessages(List<String> messages) {
         StringBuilder msg = new StringBuilder();
-        msg.append("§5§l╠§a§lS-3D§5§l╣§r §a").append(affectedBlocks).append("§b блок(-а/ов)");
+        msg.append("§f[§6*§f] §a").append(affectedBlocks).append("§e блок(-а/ов)");
         if (affectedBiomeCols > 0) {
             if (affectedEntities > 0) {
-                msg.append(", ");
+                msg.append("§e, ");
             } else {
-                msg.append(" и ");
+                msg.append("§e и ");
             }
-            msg.append(affectedBiomeCols).append(" биом(-а/ов)");
+            msg.append("§a").append(affectedBiomeCols).append("§e биом(-а/ов)");
         }
         if (affectedEntities > 0) {
             if (affectedBiomeCols > 0) {
                 msg.append(",");
             }
-            msg.append(" и ").append(affectedEntities).append(" сущност(-ь/-и/ей)");
+            msg.append("§e и ").append("§a").append(affectedEntities).append("§e сущност(-ь/-и/ей)");
         }
-        msg.append(" затронуто.");
+        msg.append("§e затронуто.");
         messages.add(msg.toString());
     }
 

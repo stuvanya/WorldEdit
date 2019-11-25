@@ -91,7 +91,7 @@ public class GeneralCommands {
         }
 
         session.setBlockChangeLimit(limit);
-        actor.print("§5§l╠§a§lS-3D§5§l╣§r §bЛимит изменяемых блоков установлен на " + limit + "."
+        actor.print("§f[§6*§f] §eЛимит изменяемых блоков установлен на " + limit + "."
                 + (limit == config.defaultChangeLimit ? "" : " (Используйте //limit чтобы вернуть значение по-умолчанию.)"));
     }
 

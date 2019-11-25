@@ -83,9 +83,9 @@ public class HistoryCommands {
             }
         }
         if (timesUndone > 0) {
-            player.print("§5§l╠§a§lS-3D§5§l╣§r §bОтменено §a" + timesUndone + " §bдоступных изменений.");
+            player.print("§f[§6*§f] §eОтменено §a" + timesUndone + " §eдоступных изменений.");
         } else {
-            player.printError("§5§l╠§a§lS-3D§5§l╣§r §bНечего отменять.");
+            player.printError("§f[§6*§f] §eНечего отменять.");
         }
     }
 
@@ -121,9 +121,9 @@ public class HistoryCommands {
             }
         }
         if (timesRedone > 0) {
-            player.print("§5§l╠§a§lS-3D§5§l╣§r §bВосстановлено §a" + timesRedone + " §bдоступных изменений.");
+            player.print("§f[§6*§f] §eВосстановлено §a" + timesRedone + " §eдоступных изменений.");
         } else {
-            player.printError("§5§l╠§a§lS-3D§5§l╣§r §bНечего восстанавливать.");
+            player.printError("§f[§6*§f] §eНечего восстанавливать.");
         }
     }
 
