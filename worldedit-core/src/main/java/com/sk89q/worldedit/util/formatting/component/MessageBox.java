@@ -74,7 +74,7 @@ public class MessageBox extends TextComponentProducer {
 
     private TextComponent createBorder(int count) {
         return TextComponent.of(Strings.repeat("-", count),
-                TextColor.YELLOW, Sets.newHashSet(TextDecoration.STRIKETHROUGH));
+                TextColor.AQUA, Sets.newHashSet(TextDecoration.STRIKETHROUGH));
     }
 
     /**

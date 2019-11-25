@@ -112,7 +112,7 @@ public class SchematicCommands {
                 ClipboardFormats.getFileExtensionArray());
 
         if (!f.exists()) {
-            actor.printError("Schematic " + filename + " does not exist!");
+            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cСхематик " + filename + " не найден!");
             return;
         }
 
@@ -121,16 +121,16 @@ public class SchematicCommands {
             format = ClipboardFormats.findByAlias(formatName);
         }
         if (format == null) {
-            actor.printError("Unknown schematic format: " + formatName);
+            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cНеизвестный формат файла: " + formatName);
             return;
         }
 
         SchematicLoadTask task = new SchematicLoadTask(actor, f, format);
         AsyncCommandBuilder.wrap(task, actor)
-                .registerWithSupervisor(worldEdit.getSupervisor(), "Loading schematic " + filename)
-                .sendMessageAfterDelay("(Please wait... loading schematic.)")
-                .onSuccess(TextComponent.of(filename, TextColor.GOLD)
-                                .append(TextComponent.of(" loaded. Paste it with ", TextColor.LIGHT_PURPLE))
+                .registerWithSupervisor(worldEdit.getSupervisor(), "§5§l╠§a§lS-3D§5§l╣§r §bЗагрузка схематика " + filename)
+                .sendMessageAfterDelay("§b(Пожалуйста подождите... загрузка схематика.)")
+                .onSuccess(TextComponent.of("§5§l╠§a§lS-3D§5§l╣§r §a" + filename, TextColor.GOLD)
+                                .append(TextComponent.of(" §bзагружен. Вставить его можно командой ", TextColor.LIGHT_PURPLE))
                                 .append(CodeFormat.wrap("//paste").clickEvent(ClickEvent.of(ClickEvent.Action.SUGGEST_COMMAND, "//paste"))),
                         session::setClipboard)
                 .onFailure("Failed to load schematic", worldEdit.getPlatformManager().getPlatformCommandManager().getExceptionConverter())
@@ -156,7 +156,7 @@ public class SchematicCommands {
 
         ClipboardFormat format = ClipboardFormats.findByAlias(formatName);
         if (format == null) {
-            actor.printError("Unknown schematic format: " + formatName);
+            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cНеизвестный формат файла: " + formatName);
             return;
         }
 
@@ -165,10 +165,10 @@ public class SchematicCommands {
         boolean overwrite = f.exists();
         if (overwrite) {
             if (!actor.hasPermission("worldedit.schematic.delete")) {
-                throw new StopExecutionException(TextComponent.of("That schematic already exists!"));
+                throw new StopExecutionException(TextComponent.of("§5§l╠§a§lS-3D§5§l╣§r §cТакой схематик уже существует!"));
             }
             if (!allowOverwrite) {
-                actor.printError("That schematic already exists. Use the -f flag to overwrite it.");
+                actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cТакой схематик уже существует! Используйте флаг-f чтобы его перезаписать.");
                 return;
             }
         }
@@ -186,9 +186,9 @@ public class SchematicCommands {
 
         SchematicSaveTask task = new SchematicSaveTask(actor, f, format, holder, overwrite);
         AsyncCommandBuilder.wrap(task, actor)
-                .registerWithSupervisor(worldEdit.getSupervisor(), "Saving schematic " + filename)
-                .sendMessageAfterDelay("(Please wait... saving schematic.)")
-                .onSuccess(filename + " saved" + (overwrite ? " (overwriting previous file)." : "."), null)
+                .registerWithSupervisor(worldEdit.getSupervisor(), "§5§l╠§a§lS-3D§5§l╣§r §bСохранение схематика " + filename)
+                .sendMessageAfterDelay("§b(Пожалуйста подождите... сохранение схематика.)")
+                .onSuccess("§5§l╠§a§lS-3D§5§l╣§r §a" + filename + " сохранен" + (overwrite ? " (предыдущий файл перезаписан)." : "."), null)
                 .onFailure("Failed to load schematic", worldEdit.getPlatformManager().getPlatformCommandManager().getExceptionConverter())
                 .buildAndExec(worldEdit.getExecutorService());
     }
@@ -209,7 +209,7 @@ public class SchematicCommands {
                 dir, filename, "schematic", ClipboardFormats.getFileExtensionArray());
 
         if (!f.exists()) {
-            actor.printError("Schematic " + filename + " does not exist!");
+            actor.printError("§5§l╠§a§lS-3D§5§l╣§r §cСхематик " + filename + " не найден!");
             return;
         }
 
@@ -274,7 +274,7 @@ public class SchematicCommands {
                 ? "//schem list -p %page%" + (sortType == -1 ? " -d" : sortType == 1 ? " -n" : "") : null;
 
         WorldEditAsyncCommandBuilder.createAndSendMessage(actor,
-                new SchematicListTask(saveDir, sortType, page, pageCommand), "(Please wait... gathering schematic list.)");
+                new SchematicListTask(saveDir, sortType, page, pageCommand), "(Пожалуйста, подождите... составление списка схематиков.)");
     }
 
     private static class SchematicLoadTask implements Callable<ClipboardHolder> {
@@ -365,7 +365,7 @@ public class SchematicCommands {
             List<File> fileList = allFiles(rootDir);
 
             if (fileList == null || fileList.isEmpty()) {
-                return ErrorFormat.wrap("No schematics found.");
+                return ErrorFormat.wrap("§5§l╠§a§lS-3D§5§l╣§r §cНе найдено ни одного схематика .");
             }
 
             File[] files = new File[fileList.size()];
@@ -414,7 +414,7 @@ public class SchematicCommands {
         private final File[] files;
 
         SchematicPaginationBox(String rootDir, File[] files, String pageCommand) {
-            super("Available schematics", pageCommand);
+            super("§bДоступные схематики", pageCommand);
             this.prefix = rootDir == null ? "" : rootDir;
             this.files = files;
         }
@@ -435,7 +435,7 @@ public class SchematicCommands {
                     .append(TextComponent.of("[L]")
                             .color(TextColor.GOLD)
                             .clickEvent(ClickEvent.of(ClickEvent.Action.RUN_COMMAND, "/schem load \"" + path + "\""))
-                            .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Click to load"))))
+                            .hoverEvent(HoverEvent.of(HoverEvent.Action.SHOW_TEXT, TextComponent.of("Нажмите, чтобы загрузить"))))
                     .append(TextComponent.space())
                     .append(TextComponent.of(path)
                             .color(TextColor.DARK_GREEN)
